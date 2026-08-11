@@ -703,6 +703,46 @@ function initScrollReveal() {
   elements.forEach((el) => observer.observe(el));
 }
 
+/* ── Fullscreen Toggle ───────────────────────────────────────── */
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+    const docEl = document.documentElement;
+    if (docEl.requestFullscreen) docEl.requestFullscreen();
+    else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
+  } else {
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  }
+}
+
+function updateFullscreenUI() {
+  const isFS = !!(document.fullscreenElement || document.webkitFullscreenElement);
+  const fsBtn = $('fullscreenBtn');
+  if (fsBtn) {
+    fsBtn.classList.toggle('is-fullscreen', isFS);
+    fsBtn.setAttribute('aria-label', isFS ? 'Exit Fullscreen' : 'Enter Fullscreen');
+  }
+}
+
+function initFullscreen() {
+  const fsBtn = $('fullscreenBtn');
+  if (fsBtn) {
+    fsBtn.addEventListener('click', toggleFullscreen);
+  }
+
+  document.addEventListener('fullscreenchange', updateFullscreenUI);
+  document.addEventListener('webkitfullscreenchange', updateFullscreenUI);
+
+  // Keyboard shortcut 'f' or 'F'
+  document.addEventListener('keydown', (e) => {
+    if (e.target.matches('input, textarea, [contenteditable]')) return;
+    if (e.key === 'f' || e.key === 'F') {
+      toggleFullscreen();
+    }
+  });
+}
+
 /* ── Init ────────────────────────────────────────────────────── */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -711,6 +751,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDaySelector();
   initEyeToggle();
   initTempleBell();
+  initFullscreen();
   initScrollReveal();
   state.order = buildOrder();
   renderList();

@@ -301,6 +301,12 @@ a {
     color: var(--marigold);
 }
 
+/* Fullscreen Button Icons */
+#fullscreenBtn .fs-compress { display: none; }
+#fullscreenBtn.is-fullscreen .fs-expand { display: none; }
+#fullscreenBtn.is-fullscreen .fs-compress { display: block; }
+#fullscreenBtn.is-fullscreen { color: var(--marigold); }
+
 .topbar__icon-link {
     color: var(--text-secondary);
     transition: color 0.3s;
