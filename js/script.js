@@ -545,6 +545,101 @@ function initEyeToggle() {
   });
 }
 
+/* ── Temple Bell Audio Synthesis ────────────────────────────── */
+
+let audioCtx = null;
+
+function ensureAudio() {
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    return audioCtx;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Unlock Web Audio on first user gesture
+['pointerdown', 'keydown'].forEach((evt) => {
+  document.addEventListener(evt, () => ensureAudio(), { once: true, capture: true });
+});
+
+function ringTempleBell() {
+  const ctx = ensureAudio();
+  if (!ctx) return;
+
+  const now = ctx.currentTime;
+  const duration = 3.2; // 3.2s long brass decay
+
+  // Master bell volume node
+  const masterGain = ctx.createGain();
+  masterGain.gain.setValueAtTime(0.7, now);
+  masterGain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+  // Tremolo LFO (4.5Hz shimmer ring)
+  const lfo = ctx.createOscillator();
+  const lfoGain = ctx.createGain();
+  lfo.frequency.setValueAtTime(4.5, now);
+  lfoGain.gain.setValueAtTime(0.1, now);
+  lfo.connect(lfoGain);
+
+  // Mandir Ghanti harmonics (Fundamental + Overtones)
+  const partials = [
+    { freq: 960,  gain: 0.55, decay: 3.2 }, // Fundamental pitch (A5/B5)
+    { freq: 1920, gain: 0.35, decay: 2.4 }, // Octave harmonic
+    { freq: 2650, gain: 0.25, decay: 1.8 }, // Minor 6th overtone
+    { freq: 5180, gain: 0.15, decay: 1.0 }, // High metallic ring
+  ];
+
+  partials.forEach((p) => {
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(p.freq, now);
+
+    g.gain.setValueAtTime(p.gain, now);
+    g.gain.exponentialRampToValueAtTime(0.0001, now + p.decay);
+
+    lfoGain.connect(g.gain);
+    osc.connect(g);
+    g.connect(masterGain);
+
+    osc.start(now);
+    osc.stop(now + p.decay + 0.1);
+  });
+
+  lfo.start(now);
+  lfo.stop(now + duration);
+
+  masterGain.connect(ctx.destination);
+
+  // Animate Bell Icon
+  const bellBtn = $('bellBtn');
+  if (bellBtn) {
+    bellBtn.classList.remove('is-ringing');
+    void bellBtn.offsetWidth;
+    bellBtn.classList.add('is-ringing');
+    setTimeout(() => bellBtn.classList.remove('is-ringing'), 800);
+  }
+}
+
+function initTempleBell() {
+  const bellBtn = $('bellBtn');
+  if (bellBtn) {
+    bellBtn.addEventListener('click', ringTempleBell);
+  }
+
+  // Keyboard shortcuts 'b' or 'g' (Ghanti)
+  document.addEventListener('keydown', (e) => {
+    if (e.target.matches('input, textarea, [contenteditable]')) return;
+    if (e.key === 'b' || e.key === 'g' || e.key === 'B' || e.key === 'G') {
+      ringTempleBell();
+    }
+  });
+}
+
 /* ── Init ────────────────────────────────────────────────────── */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -552,6 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
   trackPresence();
   initDaySelector();
   initEyeToggle();
+  initTempleBell();
   state.order = buildOrder();
   renderList();
   renderTrack();

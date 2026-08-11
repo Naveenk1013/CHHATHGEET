@@ -247,6 +247,27 @@ a {
     transform: scale(0.9);
 }
 
+/* Temple Bell Ring Animation */
+.topbar__icon-btn--bell:hover {
+    color: var(--marigold);
+}
+
+.topbar__icon-btn.is-ringing {
+    color: var(--marigold-light);
+    animation: bellSwing 0.75s ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.6));
+}
+
+@keyframes bellSwing {
+    0%   { transform: rotate(0deg); }
+    15%  { transform: rotate(20deg); }
+    30%  { transform: rotate(-18deg); }
+    45%  { transform: rotate(14deg); }
+    60%  { transform: rotate(-10deg); }
+    75%  { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
+}
+
 .topbar__icon-btn .eye-closed {
     display: none;
 }
