@@ -41,6 +41,7 @@ _(agent: log anything uncertain here — cultural/content accuracy, placeholder 
 _(agent: append one line per work session, most recent on top — format: `YYYY-MM-DD — what was done`)_
 
 - 2026-08-11 — Resolved YouTube audio playback failure: fixed hidden iframe sizing (320x180 offscreen) to prevent Chrome media renderer suspension, added origin security parameter, and implemented `onError` auto-skip handler for embed-restricted copyright videos.
+- 2026-08-11 — Optimized vertical layout hierarchy: placed title header (`महापर्व`) cleanly right under topbar, followed by Day Selector Pills, eliminating top gap and preventing any option pill overlap.
 - 2026-08-11 — Implemented Fullscreen toggle feature (`#fullscreenBtn`) with SVG expand/compress icons, cross-browser `requestFullscreen` API support, and keyboard shortcut (`f` / `F`).
 - 2026-08-11 — Applied exact Firebase Realtime Database SDK credentials (`databaseURL`: `https://chhath-puja-2a60a-default-rtdb.asia-southeast1.firebasedatabase.app`, `measurementId`: `G-J1Y0C7GPY6`) in `js/script.js`.
 - 2026-08-11 — Completely overhauled `explore.html` with a crisp, clean design focused exclusively on Chhath Puja: "What is Chhath Puja", "Why People Take Part in It", 4-day ritual timeline, ancient Vedic/Ramayana/Mahabharata history, and a dedicated Developer & Creator card for **Naveen Kumar** linking to his portfolio (`https://naveen-kr.netlify.app/`).
