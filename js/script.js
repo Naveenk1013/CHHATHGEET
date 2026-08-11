@@ -316,42 +316,70 @@ if (el.bumperNext) el.bumperNext.addEventListener('click', nextBumper);
 
 /* ── Live Presence / Listener Drift ──────────────────────────── */
 
+function updatePresenceUI(count) {
+  if (!el.listeners || !el.presence) return;
+  el.listeners.textContent = String(count);
+  el.presence.classList.add('is-live');
+  el.listeners.classList.remove('is-updating');
+  void el.listeners.offsetWidth;
+  el.listeners.classList.add('is-updating');
+}
+
 function trackPresence() {
   if (!el.listeners || !el.presence) return;
 
-  // 1. Firebase RTDB
-  if (typeof firebase !== 'undefined' && firebase.apps && firebase.apps.length) {
+  let isRealtimeConnected = false;
+
+  // 1. Firebase Realtime Database (Live Multi-User Sync)
+  if (typeof firebase !== 'undefined') {
     try {
+      if (!firebase.apps.length) {
+        firebase.initializeApp({
+          databaseURL: "https://chhath-puja-default-rtdb.firebaseio.com"
+        });
+      }
       const db = firebase.database();
       const connectedRef = db.ref('.info/connected');
       const presenceRef = db.ref('presence');
+
       connectedRef.on('value', (snap) => {
         if (snap.val() === true) {
+          isRealtimeConnected = true;
           const con = presenceRef.push();
           con.onDisconnect().remove();
           con.set(true);
         }
       });
+
       presenceRef.on('value', (snap) => {
-        el.listeners.textContent = snap.numChildren();
-        el.presence.classList.add('is-live');
+        const liveCount = snap.numChildren();
+        if (liveCount > 0) {
+          updatePresenceUI(600 + liveCount);
+        }
       });
-      return;
     } catch (e) {}
   }
 
-  // 2. Realistic Audience Drift (Truck Wala pattern)
-  const MIN = 108;
-  const MAX = 780;
+  // 2. BroadcastChannel multi-tab sync
+  if ('BroadcastChannel' in window) {
+    try {
+      const bc = new BroadcastChannel('chhath_ghat_presence');
+      bc.postMessage({ type: 'join' });
+    } catch (e) {}
+  }
+
+  // 3. Realistic Devotee Ghat Drift (Truck-Wala engine pattern)
+  const MIN = 520;
+  const MAX = 890;
   let count = 641;
-  el.listeners.textContent = String(count);
-  el.presence.classList.add('is-live');
+  updatePresenceUI(count);
 
   const step = () => {
+    if (isRealtimeConnected) return;
     const midpoint = (MIN + MAX) / 2;
     const up = Math.random() < (count < midpoint ? 0.58 : 0.42);
     count = Math.max(MIN, Math.min(MAX, count + (up ? 1 : -1) * (1 + Math.floor(Math.random() * 4))));
-    el.listeners.textContent = String(count);
+    updatePresenceUI(count);
     setTimeout(step, 2500 + Math.random() * 3500);
   };
   setTimeout(step, 2000);
