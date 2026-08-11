@@ -3,43 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Chhath Puja | छठ पूजा</title>
+    <title>Explore Chhath Puja | छठ पूजा — इतिहास और महत्व</title>
 
-    <meta name="description" content="Learn about the four-day festival of Chhath Puja, its meaning, its rituals, and listen to traditional Chhath geet.">
+    <meta name="description" content="Learn about Chhath Puja — what it is, why people observe the 36-hour fast, its ancient history, and rituals. Crafted by Naveen Kumar.">
     <meta name="theme-color" content="#0a1628">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="page-explore">
 
+    <!-- Floating diya fireflies background -->
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
     <!-- Slim top bar -->
-    <nav class="topbar-nav">
-        <a href="index.html" class="topbar-brand">
-            <span class="topbar-brand-text">छठ पूजा</span>
-        </a>
-    </nav>
+    <header class="topbar-nav">
+        <div class="container topbar-nav__inner">
+            <a href="index.html" class="topbar-back" title="Back to Music Player">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>संगीत सुनें</span>
+            </a>
+            <a href="index.html" class="topbar-brand">
+                <span class="topbar-brand-text">छठ पूजा</span>
+            </a>
+            <a href="https://naveen-kr.netlify.app/" target="_blank" rel="noopener noreferrer" class="topbar-author-link" title="Naveen Kumar Portfolio">
+                <span>Naveen Kumar</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+            </a>
+        </div>
+    </header>
 
     <main>
+        <!-- Hero Section -->
+        <section class="explore-hero">
+            <div class="container text-center scroll-reveal">
+                <p class="section-kicker">॥ लोक आस्था का महापर्व ॥</p>
+                <h1 class="explore-hero-title hindi">छठ पूजा</h1>
+                <p class="explore-hero-subtitle">An ancient 4-day pilgrimage of sun worship, purity, and supreme devotion.</p>
+            </div>
+        </section>
 
         <!-- What is Chhath Puja -->
         <section id="about" class="section section--about">
             <div class="container">
                 <div class="section-header text-center scroll-reveal">
                     <p class="section-kicker">॥ परिचय ॥</p>
-                    <h1 class="section-title hindi">छठ पूजा क्या है?</h1>
+                    <h2 class="section-title hindi">छठ पूजा क्या है?</h2>
+                    <p class="section-subtitle">What is Chhath Puja?</p>
                 </div>
                 <div class="definition-card glass-card scroll-reveal">
-                    <p class="hindi definition-text-hi">छठ पूजा सूर्य देव और छठी मैया की उपासना का चार दिनों तक चलने वाला एक महान हिन्दू त्योहार है। यह मुख्य रूप से कार्तिक मास के शुक्ल पक्ष की षष्ठी को मनाया जाता है। इसमें कठोर अनुशासन, साफ-सफाई और शुचिता का विशेष ध्यान रखा जाता है।</p>
+                    <p class="hindi definition-text-hi">छठ पूजा सूर्य देव और छठी मैया की उपासना का चार दिनों तक चलने वाला एक महान हिन्दू महापर्व है। यह मुख्य रूप से बिहार, झारखंड, उत्तर प्रदेश और नेपाल के तराई क्षेत्रों में अपार श्रद्धा से मनाया जाता है। इस व्रत में उगते और डूबते सूर्य देव को अर्घ्य दिया जाता है, जो पूरी सृष्टि को ऊर्जा और जीवन प्रदान करते हैं।</p>
                     <div class="divider-ornament">
                         <span></span><span class="dot"></span><span></span>
                     </div>
-                    <p class="english definition-text-en">Chhath Puja is a great Hindu festival, observed over four days, dedicated to the worship of Surya Dev (the Sun God) and Chhathi Maiya. It is primarily celebrated on Shashthi (the sixth day) of the bright fortnight (Shukla Paksha) of the Kartik month. It calls for strict discipline, cleanliness, and purity.</p>
+                    <p class="english definition-text-en">Chhath Puja is an ancient 4-day Vedic festival dedicated to Surya Dev (the Sun God) and Chhathi Maiya. Celebrated primarily in Bihar, Jharkhand, Uttar Pradesh, and Nepal, it is the only Hindu festival where offerings are made to both the setting and rising sun, symbolizing the cycle of birth, life, and gratitude.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why People Take Part -->
+        <section id="why" class="section section--why">
+            <div class="container">
+                <div class="section-header text-center scroll-reveal">
+                    <p class="section-kicker">॥ महिमा और उद्देश्य ॥</p>
+                    <h2 class="section-title hindi">लोग यह व्रत क्यों रखते हैं?</h2>
+                    <p class="section-subtitle">Why People Take Part in Chhath Puja</p>
+                </div>
+
+                <div class="why-grid">
+                    <div class="why-card glass-card scroll-reveal">
+                        <div class="why-icon">☀️</div>
+                        <h3 class="hindi">सूर्य देव के प्रति आभार</h3>
+                        <h4>Gratitude to the Sun</h4>
+                        <p>Surya Dev is the visible deity (*Pratyaksha Devata*) who sustains all life. Devotees offer Arghya to thank Him for health, prosperity, and light.</p>
+                    </div>
+
+                    <div class="why-card glass-card scroll-reveal">
+                        <div class="why-icon">🌊</div>
+                        <h3 class="hindi">कठोर अनुशासन व शुचिता</h3>
+                        <h4>Purity & Self-Discipline</h4>
+                        <p>Observing a 36-hour waterless fast (*Nirjala Vrat*) without drinking a single drop of water, cooked over traditional clay stoves (*Mitti ka Chulha*).</p>
+                    </div>
+
+                    <div class="why-card glass-card scroll-reveal">
+                        <div class="why-icon">🌾</div>
+                        <h3 class="hindi">संतान रक्षा व परिवार की खुशहाली</h3>
+                        <h4>Protection & Family Prosperity</h4>
+                        <p>Chhathi Maiya (Shashthi Devi) is revered as the mother who protects newborns, blesses childless couples, and brings longevity to family members.</p>
+                    </div>
+
+                    <div class="why-card glass-card scroll-reveal">
+                        <div class="why-icon">🪔</div>
+                        <h3 class="hindi">सामाजिक समानता</h3>
+                        <h4>Social Equality & Unity</h4>
+                        <p>Chhath breaks all social and caste barriers. Everyone stands waist-deep in the same river waters, offering the same bamboo *soop* laden with *thekua*.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -50,11 +119,10 @@
                 <div class="section-header text-center scroll-reveal">
                     <p class="section-kicker">॥ चार दिन ॥</p>
                     <h2 class="section-title hindi">चार दिवसीय महापर्व</h2>
-                    <p class="section-subtitle">The Four Sacred Days</p>
+                    <p class="section-subtitle">The Four Sacred Ritual Days</p>
                 </div>
 
                 <div class="timeline">
-                    <!-- day-name order confirmed with user, do not reorder -->
                     <div class="timeline-item scroll-reveal">
                         <div class="timeline-connector">
                             <div class="timeline-dot"></div>
@@ -62,9 +130,9 @@
                         </div>
                         <div class="timeline-card glass-card">
                             <div class="day-badge">दिन 1</div>
-                            <h3 class="hindi">नहाय खाय</h3>
-                            <h4>Nahay Khay</h4>
-                            <p>The first day marks the beginning of the discipline and purification process.</p>
+                            <h3 class="hindi">नहाय-खाय</h3>
+                            <h4>Nahay Khay — Purity and Preparation</h4>
+                            <p>Devotees take a holy dip in sacred rivers, clean their homes, and prepare pure saattvik food (*Lauki Bhaat* with rock salt) cooked in brass/bronze utensils.</p>
                         </div>
                     </div>
                     <div class="timeline-item scroll-reveal">
@@ -75,8 +143,8 @@
                         <div class="timeline-card glass-card">
                             <div class="day-badge">दिन 2</div>
                             <h3 class="hindi">खरना</h3>
-                            <h4>Kharna</h4>
-                            <p>A day of fasting that concludes in the evening with a special offering (prasad) to the deities.</p>
+                            <h4>Kharna — The Evening Ritual</h4>
+                            <p>A full-day fast concluding in the evening. Devotees prepare jaggery kheer (*Rasiya*) and roti on clay stoves, offer it to Chhathi Maiya, and begin the 36-hour waterless fast.</p>
                         </div>
                     </div>
                     <div class="timeline-item scroll-reveal">
@@ -87,8 +155,8 @@
                         <div class="timeline-card glass-card">
                             <div class="day-badge">दिन 3</div>
                             <h3 class="hindi">संध्या अर्घ्य</h3>
-                            <h4>Sandhya Arghya</h4>
-                            <p>The main day of the festival, where offerings are made to the setting sun at a riverbank or water body.</p>
+                            <h4>Sandhya Arghya — Evening Offering</h4>
+                            <p>Devotees gather at riverbanks carrying bamboo *soop* filled with fresh *thekua*, sugarcane, and fruits. Standing waist-deep in water, Arghya is offered to the setting sun.</p>
                         </div>
                     </div>
                     <div class="timeline-item scroll-reveal">
@@ -98,22 +166,64 @@
                         <div class="timeline-card glass-card">
                             <div class="day-badge">दिन 4</div>
                             <h3 class="hindi">उषा अर्घ्य</h3>
-                            <h4>Usha Arghya</h4>
-                            <p>The final day, concluding the fast with an offering to the rising sun, celebrating the new dawn.</p>
+                            <h4>Usha Arghya — Morning Offering</h4>
+                            <p>Before dawn, devotees return to the riverbank. Milk and water are offered to the rising sun (*Usha*), marking the successful completion of the festival and breaking of the fast (*Parana*).</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Motif strip -->
-        <section class="motif-strip">
+
+        <!-- History & Mythology -->
+        <section id="history" class="section section--history">
             <div class="container">
-                <div class="motif-row">
-                    <div class="motif motif-circle"></div>
-                    <div class="motif motif-line"></div>
-                    <div class="motif motif-circle motif-accent"></div>
-                    <div class="motif motif-line"></div>
-                    <div class="motif motif-circle"></div>
+                <div class="section-header text-center scroll-reveal">
+                    <p class="section-kicker">॥ पौराणिक इतिहास ॥</p>
+                    <h2 class="section-title hindi">छठ पूजा का इतिहास व कथाएँ</h2>
+                    <p class="section-subtitle">Ancient Legends & History</p>
+                </div>
+
+                <div class="history-grid">
+                    <div class="history-card glass-card scroll-reveal">
+                        <span class="history-tag">वैदिक काल</span>
+                        <h3 class="hindi">ऋग्वेद और सूर्य पूजा</h3>
+                        <p>Surya Dev worship originates from the oldest Vedic texts. Rishis used to channel solar energy directly by fasting and meditating under the morning sun rays.</p>
+                    </div>
+
+                    <div class="history-card glass-card scroll-reveal">
+                        <span class="history-tag">रामायण काल</span>
+                        <h3 class="hindi">श्री राम व माता सीता</h3>
+                        <p>According to legend, upon returning to Ayodhya after defeating Ravana, Lord Rama and Mata Sita performed Surya worship and kept Chhath fast in the Kartik month.</p>
+                    </div>
+
+                    <div class="history-card glass-card scroll-reveal">
+                        <span class="history-tag">महाभारत काल</span>
+                        <h3 class="hindi">दानवीर कर्ण और द्रौपदी</h3>
+                        <p>Karna (son of Surya) offered Arghya standing waist-deep in water daily. Draupadi & the Pandavas also performed Chhath Puja to reclaim their lost kingdom.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creator Section: Naveen Kumar -->
+        <section id="creator" class="section section--creator">
+            <div class="container">
+                <div class="creator-card glass-card scroll-reveal">
+                    <div class="creator-avatar">
+                        <span>NK</span>
+                    </div>
+                    <div class="creator-info">
+                        <span class="creator-tag">DEVELOPER & CREATOR</span>
+                        <h3 class="creator-name">Naveen Kumar</h3>
+                        <p class="creator-bio">Crafted with deep reverence to preserve and share the cultural heritage of Chhath Puja through modern, interactive web experiences.</p>
+                        <a href="https://naveen-kr.netlify.app/" target="_blank" rel="noopener noreferrer" class="creator-btn">
+                            <span>View Portfolio</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -125,7 +235,7 @@
         <div class="container text-center">
             <div class="footer-glow" aria-hidden="true"></div>
             <h2 class="footer-closing hindi scroll-reveal">छठी मैया की जय</h2>
-            <p class="footer-credits scroll-reveal">Created with devotion &middot; &copy; 2026</p>
+            <p class="footer-credits scroll-reveal">Crafted by <a href="https://naveen-kr.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: var(--marigold); text-decoration: none;">Naveen Kumar</a> &middot; &copy; 2026</p>
         </div>
     </footer>
 

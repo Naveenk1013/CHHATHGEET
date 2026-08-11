@@ -907,9 +907,264 @@ body.is-hidden-overlay .bumper {
     text-align: center;
 }
 
-.section {
-    padding: 6rem 0;
-    position: relative;
+/* ===========================================
+   Explore Page Header & Hero
+   =========================================== */
+.topbar-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10, 22, 40, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.75rem 0;
+}
+
+.topbar-nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: color 0.3s, border-color 0.3s, background 0.3s;
+}
+
+.topbar-back:hover {
+    color: var(--marigold);
+    border-color: rgba(251, 191, 36, 0.3);
+    background: rgba(251, 191, 36, 0.06);
+}
+
+.topbar-author-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--marigold);
+    text-decoration: none;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    transition: color 0.3s, background 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+.topbar-author-link:hover {
+    color: var(--cream-warm);
+    background: rgba(251, 191, 36, 0.2);
+    border-color: var(--marigold);
+}
+
+.explore-hero {
+    padding-top: max(7rem, 14vh);
+    padding-bottom: 3rem;
+}
+
+.explore-hero-title {
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--text-primary);
+    text-shadow: 0 4px 60px rgba(251, 191, 36, 0.3);
+    margin-bottom: 1rem;
+}
+
+.explore-hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--text-secondary);
+    font-weight: 300;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- Why Grid --- */
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.why-card {
+    padding: 2rem 1.75rem;
+    transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(251, 191, 36, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.why-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.why-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--cream-warm);
+    margin-bottom: 0.25rem;
+}
+
+.why-card h4 {
+    font-size: 0.85rem;
+    color: var(--marigold);
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+}
+
+.why-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* --- History Grid --- */
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.history-card {
+    padding: 2rem 1.75rem;
+    border-left: 3px solid var(--marigold);
+    transition: transform 0.4s var(--ease), box-shadow 0.4s ease;
+}
+
+.history-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.history-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--marigold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.history-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--cream-warm);
+    margin-bottom: 0.75rem;
+}
+
+.history-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+/* --- Creator Card Section (Naveen Kumar) --- */
+.section--creator {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+.creator-card {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.05), rgba(10, 22, 40, 0.7));
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.creator-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron), var(--marigold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.75rem;
+    color: var(--night);
+    flex-shrink: 0;
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.4);
+}
+
+.creator-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--marigold);
+    margin-bottom: 0.35rem;
+}
+
+.creator-name {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.creator-bio {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.creator-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--saffron), var(--marigold));
+    color: var(--night);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+    transition: transform 0.2s, box-shadow 0.3s, filter 0.3s;
+}
+
+.creator-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.5);
+    filter: brightness(1.1);
+}
+
+@media (max-width: 600px) {
+    .creator-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+        gap: 1.25rem;
+    }
 }
 
 .section-header {

@@ -682,6 +682,26 @@ function initTempleBell() {
   });
 }
 
+/* ── Scroll Reveal Observer ─────────────────────────────────── */
+
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.scroll-reveal');
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}
+
 /* ── Init ────────────────────────────────────────────────────── */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -690,6 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDaySelector();
   initEyeToggle();
   initTempleBell();
+  initScrollReveal();
   state.order = buildOrder();
   renderList();
   renderTrack();
