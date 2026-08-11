@@ -236,7 +236,8 @@ body.is-hidden-overlay .bumper {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    margin-top: max(3.8rem, 7vh);
+    margin-top: max(4.2rem, 8vh);
+    margin-bottom: 1.5rem;
     padding: 0 1rem;
     flex-wrap: wrap;
     position: relative;
@@ -357,17 +358,18 @@ body.is-hidden-overlay .bumper {
     position: relative;
     z-index: 2;
     text-align: center;
-    margin-top: 0.75rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1rem;
     font-family: var(--font-display);
     font-weight: 900;
-    line-height: 0.85;
+    line-height: 0.9;
     pointer-events: none;
     user-select: none;
 }
 
 .logo__line {
     display: block;
-    font-size: clamp(4.5rem, 18vw, 10rem);
+    font-size: clamp(3.8rem, 14vw, 7.5rem);
     color: var(--text-primary);
     text-shadow:
         0 2px 30px rgba(251, 191, 36, 0.25),
