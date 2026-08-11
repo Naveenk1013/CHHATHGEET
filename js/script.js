@@ -148,6 +148,7 @@ function go(newPos) {
   if (n === 0) return;
   state.pos = ((newPos % n) + n) % n;
   renderTrack();
+  switchDay(state.pos % DAYS_DATA.length);
   if (!yt) return;
   state.started = true;
   const track = currentTrack();
@@ -448,11 +449,109 @@ window.onYouTubeIframeAPIReady = () => {
   requestAnimationFrame(paintProgress);
 };
 
+/* ── Days Data & Ritual Facts ────────────────────────────────── */
+
+const DAYS_DATA = [
+  {
+    day: 1,
+    titleHindi: "महापर्व",
+    tag: "DAY 1 · NAHAY KHAY (PURITY & PREPARATION)",
+    desc: "The spiritual journey begins with holy ritual bathing and traditional saattvik food preparation.",
+    image: "bgimg/Day01.jpg"
+  },
+  {
+    day: 2,
+    titleHindi: "खरना",
+    tag: "DAY 2 · KHARNA (THE EVENING RITUAL)",
+    desc: "Offering jaggery kheer on a traditional clay stove in warm, intimate reflection before starting the 36-hour waterless fast.",
+    image: "bgimg/Day02.jpg"
+  },
+  {
+    day: 3,
+    titleHindi: "संध्या अर्घ्य",
+    tag: "DAY 3 · SANDHYA ARGHYA (EVENING OFFERING)",
+    desc: "Offering a decorated bamboo soop laden with fresh thekua and fruits to the setting sun at the riverbank.",
+    image: "bgimg/Day03.jpg"
+  },
+  {
+    day: 4,
+    titleHindi: "उषा अर्घ्य",
+    tag: "DAY 4 · USHA ARGHYA (MORNING OFFERING)",
+    desc: "Standing waist-deep in water, offering milk to the rising sun as a triumphant culmination of the festival.",
+    image: "bgimg/Day04.jpg"
+  }
+];
+
+let activeDayIndex = 0;
+let bgActiveLayer = 1;
+
+function switchDay(index) {
+  if (index < 0 || index >= DAYS_DATA.length) return;
+  activeDayIndex = index;
+  const data = DAYS_DATA[index];
+
+  // 1. Update Day Pills
+  document.querySelectorAll('.day-pill').forEach((pill, i) => {
+    pill.classList.toggle('is-active', i === index);
+  });
+
+  // 2. Crossfade Background Layers
+  const layer1 = $('bgLayer1');
+  const layer2 = $('bgLayer2');
+
+  if (layer1 && layer2) {
+    if (bgActiveLayer === 1) {
+      layer2.style.backgroundImage = `url('${data.image}')`;
+      layer2.classList.add('is-active');
+      layer1.classList.remove('is-active');
+      bgActiveLayer = 2;
+    } else {
+      layer1.style.backgroundImage = `url('${data.image}')`;
+      layer1.classList.add('is-active');
+      layer2.classList.remove('is-active');
+      bgActiveLayer = 1;
+    }
+  }
+
+  // 3. Update Text & Fact Card
+  const titleEl = $('dayTitleHindi');
+  const tagEl = $('dayTag');
+  const descEl = $('dayDesc');
+
+  if (titleEl) titleEl.textContent = data.titleHindi;
+  if (tagEl) tagEl.textContent = data.tag;
+  if (descEl) descEl.textContent = data.desc;
+}
+
+function initDaySelector() {
+  document.querySelectorAll('.day-pill').forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const dayIdx = parseInt(pill.dataset.day, 10);
+      switchDay(dayIdx);
+    });
+  });
+}
+
+/* ── Eye Button Toggle (Hide / Show Overlay) ─────────────────── */
+
+function initEyeToggle() {
+  const eyeBtn = $('eyeBtn');
+  if (!eyeBtn) return;
+
+  eyeBtn.addEventListener('click', () => {
+    const hidden = document.body.classList.toggle('is-hidden-overlay');
+    eyeBtn.classList.toggle('is-hidden', hidden);
+    eyeBtn.setAttribute('aria-expanded', String(!hidden));
+  });
+}
+
 /* ── Init ────────────────────────────────────────────────────── */
 
 document.addEventListener('DOMContentLoaded', () => {
   spawnParticles();
   trackPresence();
+  initDaySelector();
+  initEyeToggle();
   state.order = buildOrder();
   renderList();
   renderTrack();

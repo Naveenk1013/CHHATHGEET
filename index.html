@@ -58,8 +58,12 @@
 </head>
 <body>
 
-    <!-- Background -->
-    <div class="bg" aria-hidden="true"></div>
+    <!-- Background with cross-fading layers & dark vignette scrim -->
+    <div class="bg" id="bg" aria-hidden="true">
+        <div class="bg__layer bg__layer--1 is-active" id="bgLayer1" style="background-image: url('bgimg/Day01.jpg');"></div>
+        <div class="bg__layer bg__layer--2" id="bgLayer2" style="background-image: url('bgimg/Day02.jpg');"></div>
+        <div class="bg__scrim"></div>
+    </div>
 
     <!-- Floating diya sparks -->
     <div class="particles" id="particles" aria-hidden="true"></div>
@@ -80,7 +84,20 @@
             <span class="presence__label">at the ghats</span>
         </div>
 
-        <nav class="topbar__right" aria-label="Listen elsewhere">
+        <nav class="topbar__right" aria-label="Controls">
+            <!-- Eye Button: Show / Hide Text & Overlay -->
+            <button class="topbar__icon-btn" id="eyeBtn" type="button" aria-label="Toggle text overlay" title="Toggle Text Overlay">
+                <svg class="eye-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <svg class="eye-closed" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+            </button>
+
+            <!-- YouTube Music Link -->
             <a class="topbar__icon-link"
                href="https://music.youtube.com/playlist?list=PLEIQibB6Laz8&si=AR2O-MJOIsfLKcaO"
                target="_blank"
@@ -95,12 +112,29 @@
     </header>
 
     <main>
-        <!-- ── Wordmark ────────────────────────────────────── -->
-        <h1 class="logo" lang="hi">
-            <span class="logo__line">छठ</span>
-            <span class="logo__line">पूजा</span>
-            <span class="sr-only" lang="en">Chhath Puja</span>
-        </h1>
+        <!-- ── Overlay Content (Toggled by Eye Button) ────────────────── -->
+        <div class="overlay-content" id="overlayContent">
+
+            <!-- Day Selector Pills -->
+            <nav class="day-pills" aria-label="Select Chhath Day">
+                <button type="button" class="day-pill is-active" data-day="0">Day 1: नहाय-खाय</button>
+                <button type="button" class="day-pill" data-day="1">Day 2: खरना</button>
+                <button type="button" class="day-pill" data-day="2">Day 3: संध्या अर्घ्य</button>
+                <button type="button" class="day-pill" data-day="3">Day 4: उषा अर्घ्य</button>
+            </nav>
+
+            <!-- Wordmark Title -->
+            <h1 class="logo" lang="hi">
+                <span class="logo__line" id="dayTitleHindi">महापर्व</span>
+                <span class="sr-only" lang="en">Chhath Puja</span>
+            </h1>
+
+            <!-- Ritual Fact Badge -->
+            <div class="fact-card" id="factCard">
+                <span class="fact-card__tag" id="dayTag">DAY 1 &middot; NAHAY KHAY</span>
+                <p class="fact-card__desc" id="dayDesc">Purity and Preparation — Establishing the spiritual journey with sacred ritual bathing and traditional saattvik offerings.</p>
+            </div>
+        </div>
 
         <!-- ── Player dock ─────────────────────────────────── -->
         <div class="dock">

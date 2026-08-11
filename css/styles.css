@@ -67,13 +67,41 @@ a { color: inherit; }
 }
 
 /* ===========================================
-   Background — clean dark
+   Background — Cross-fading layers + scrim
    =========================================== */
 .bg {
     position: fixed;
     inset: 0;
     z-index: 0;
     background: var(--night);
+    overflow: hidden;
+}
+
+.bg__layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s var(--ease);
+    transform: scale(1.03);
+}
+
+.bg__layer.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.bg__scrim {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(10, 22, 40, 0.45) 0%,
+        rgba(10, 22, 40, 0.85) 100%
+    );
+    pointer-events: none;
 }
 
 /* Firefly particles */
@@ -109,7 +137,7 @@ a { color: inherit; }
 }
 
 /* ===========================================
-   Top Bar
+   Top Bar & Icon Buttons
    =========================================== */
 .topbar {
     position: fixed;
@@ -149,6 +177,34 @@ a { color: inherit; }
     gap: 0.75rem;
 }
 
+/* Eye Button & Icon Buttons */
+.topbar__icon-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s, background 0.3s, transform 0.2s;
+}
+
+.topbar__icon-btn:hover {
+    color: var(--marigold);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.topbar__icon-btn:active {
+    transform: scale(0.9);
+}
+
+.topbar__icon-btn .eye-closed { display: none; }
+.topbar__icon-btn.is-hidden .eye-open { display: none; }
+.topbar__icon-btn.is-hidden .eye-closed { display: block; }
+.topbar__icon-btn.is-hidden { color: var(--marigold); }
+
 .topbar__icon-link {
     color: var(--text-secondary);
     transition: color 0.3s;
@@ -156,6 +212,97 @@ a { color: inherit; }
 }
 
 .topbar__icon-link:hover { color: var(--vermillion); }
+
+/* ===========================================
+   Overlay Content & Toggle State
+   =========================================== */
+.overlay-content {
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease), visibility 0.5s;
+    opacity: 1;
+    visibility: visible;
+}
+
+body.is-hidden-overlay .overlay-content,
+body.is-hidden-overlay .bumper {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+}
+
+/* Day Selector Pills */
+.day-pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: max(3.8rem, 7vh);
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.day-pill {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: color 0.3s, background 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+.day-pill:hover {
+    color: var(--cream-warm);
+    background: rgba(251, 191, 36, 0.1);
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.day-pill.is-active {
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.3), rgba(249, 115, 22, 0.3));
+    color: var(--marigold-light);
+    border-color: var(--marigold);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.25);
+}
+
+/* Fact Card */
+.fact-card {
+    max-width: 440px;
+    margin: 1.25rem auto 0;
+    padding: 0.85rem 1.25rem;
+    background: rgba(10, 22, 40, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.85rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.fact-card__tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--marigold);
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+}
+
+.fact-card__desc {
+    font-size: 0.85rem;
+    color: var(--cream-warm);
+    line-height: 1.5;
+    font-weight: 300;
+}
 
 /* --- Presence Indicator (Active Devotees) --- */
 .presence {
@@ -210,7 +357,7 @@ a { color: inherit; }
     position: relative;
     z-index: 2;
     text-align: center;
-    margin-top: max(4rem, 8vh);
+    margin-top: 0.75rem;
     font-family: var(--font-display);
     font-weight: 900;
     line-height: 0.85;

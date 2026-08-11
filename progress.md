@@ -41,6 +41,7 @@ _(agent: log anything uncertain here — cultural/content accuracy, placeholder 
 _(agent: append one line per work session, most recent on top — format: `YYYY-MM-DD — what was done`)_
 
 - 2026-08-11 — Resolved YouTube audio playback failure: fixed hidden iframe sizing (320x180 offscreen) to prevent Chrome media renderer suspension, added origin security parameter, and implemented `onError` auto-skip handler for embed-restricted copyright videos.
+- 2026-08-11 — Added background image cross-fading system (`bgimg/Day01.jpg` to `Day04.jpg`), interactive Day Selector Pills (Day 1: नहाय-खाय, Day 2: खरना, Day 3: संध्या अर्घ्य, Day 4: उषा अर्घ्य), Day Ritual Facts Card, and Eye Button (`#eyeBtn`) to toggle hiding/showing overlay text.
 - 2026-08-11 — Fully refactored `js/script.js` to match the exact Truck Wala engine architecture: single-track `loadVideoById` initialization (bypassing all YouTube playlist CORS/embed blocks), `performance.now()` high-precision progress extrapolator, `pointerdown`/`pointermove`/`pointerup` scrubbing with pointer capture, keyboard shortcuts (`Space`, `k`, `n`, `p`, `Left`/`Right` arrows), and realistic audience drift.
 - 2026-08-11 — Added playlist panel header with title ("छठी मैया के गीत") and explicit close button (`✕`) for improved UX.
 - 2026-08-11 — Implemented true real-time active user presence tracking system (`trackPresence()`) with Firebase RTDB / WebSocket support, hiding indicator until live connection count lands.
