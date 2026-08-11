@@ -218,6 +218,13 @@ a {
     letter-spacing: 0.05em;
 }
 
+.topbar__left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
 .topbar__right {
     display: flex;
     align-items: center;
