@@ -98,9 +98,16 @@ We are **not** adopting: irreverent/slangy tone, truck/highway visual motifs (re
 2. Hero section
 3. "What is Chhath Puja" section
 4. Four-day timeline section
-5. Geet/music player section
-6. Gallery/visual motif strip
-7. Footer + final meta/OG polish
+5. Audio player integration (YouTube hidden player)
+6. OpenGraph artwork + social share optimization
+7. Final polish + mobile responsive testing
 8. Performance + accessibility pass
 9. Content accuracy review with user
 10. Launch
+
+## 14. Future Roadmap & Community Seva (Post-v1 Vision)
+- **Transparent Donation & Ghat Seva Platform**:
+  - Add a transparent donation section allowing devotees to contribute any amount toward Chhath Puja community seva.
+  - **Swachh Ghat Seva**: Cleaning, illuminating, and decorating riverbank ghats prior to and during the festival.
+  - **Prasad & Samagri Distribution**: Buying and distributing bamboo *soop*, fresh fruits, sugarcane, and *thekua* prasad on behalf of donors to underprivileged families so financial constraints never prevent anyone from worshiping Chhathi Maiya.
+  - **Live Telecast & 100% Public Transparency**: Live video streaming of the ghat cleaning and prasad distribution along with a public, line-item ledger of all incoming donations and expense receipts.

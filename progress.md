@@ -41,6 +41,7 @@ _(agent: log anything uncertain here — cultural/content accuracy, placeholder 
 _(agent: append one line per work session, most recent on top — format: `YYYY-MM-DD — what was done`)_
 
 - 2026-08-11 — Resolved YouTube audio playback failure: fixed hidden iframe sizing (320x180 offscreen) to prevent Chrome media renderer suspension, added origin security parameter, and implemented `onError` auto-skip handler for embed-restricted copyright videos.
+- 2026-08-11 — Documented Future Roadmap in `prd.md`: Transparent Donation & Ghat Seva platform (Ghat cleaning, Prasad & Samagri distribution for needy families, live telecast, and 100% public financial transparency).
 - 2026-08-11 — Shifted Active Devotees presence indicator (`3 at the ghats`) to the left side of the topbar alongside the "जानिए" link inside `.topbar__left`.
 - 2026-08-11 — Optimized vertical layout hierarchy: placed title header (`महापर्व`) cleanly right under topbar, followed by Day Selector Pills, eliminating top gap and preventing any option pill overlap.
 - 2026-08-11 — Implemented Fullscreen toggle feature (`#fullscreenBtn`) with SVG expand/compress icons, cross-browser `requestFullscreen` API support, and keyboard shortcut (`f` / `F`).
