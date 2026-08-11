@@ -248,14 +248,31 @@ a {
 }
 
 /* Temple Bell Ring Animation */
-.topbar__icon-btn--bell:hover {
+.topbar__icon-btn--bell {
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.35);
     color: var(--marigold);
+    padding: 0.3rem 0.65rem;
+    border-radius: 9999px;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.15);
+    transition: color 0.3s, background 0.3s, border-color 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
-.topbar__icon-btn.is-ringing {
+.topbar__icon-btn--bell:hover {
+    color: var(--cream-warm);
+    background: rgba(251, 191, 36, 0.22);
+    border-color: var(--marigold);
+    box-shadow: 0 0 18px rgba(245, 158, 11, 0.35);
+}
+
+.topbar__icon-btn--bell.is-ringing {
     color: var(--marigold-light);
     animation: bellSwing 0.75s ease-in-out;
-    filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.6));
+    box-shadow: 0 0 24px rgba(251, 191, 36, 0.6);
 }
 
 @keyframes bellSwing {

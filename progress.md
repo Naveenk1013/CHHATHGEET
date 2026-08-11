@@ -41,6 +41,7 @@ _(agent: log anything uncertain here — cultural/content accuracy, placeholder 
 _(agent: append one line per work session, most recent on top — format: `YYYY-MM-DD — what was done`)_
 
 - 2026-08-11 — Resolved YouTube audio playback failure: fixed hidden iframe sizing (320x180 offscreen) to prevent Chrome media renderer suspension, added origin security parameter, and implemented `onError` auto-skip handler for embed-restricted copyright videos.
+- 2026-08-11 — Enhanced Temple Bell button with prominent glowing frosted glass pill (`background: rgba(251, 191, 36, 0.12)`), golden border, and Devanagari label ("घंटी") in the topbar header for maximum visibility.
 - 2026-08-11 — Implemented Web Audio API synthesized Temple Bell (Mandir Ghanti) sound with brass overtones, exponential decay, 4.5Hz tremolo shimmer, button swinging animation (`@keyframes bellSwing`), and keyboard shortcuts (`b` / `g`).
 - 2026-08-11 — Created sacred SVG favicon (`favicon.svg`) featuring a glowing golden Surya Dev sun with radiant rays & diya flame motif, linked across `index.html` and `explore.html`.
 - 2026-08-11 — Adjusted vertical margin spacing (`margin-bottom: 1.5rem` on `.day-pills`, `margin-top: 1.25rem` on `.logo`) to eliminate overlap between day options and main header.
