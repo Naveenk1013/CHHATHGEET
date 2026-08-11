@@ -36,6 +36,20 @@ const el = {
 const YT_API_KEY = "AIzaSyDd3hSBceunTPgtuxa8X90LtWwgBWldolo";
 const PLAYLIST_ID = "PLEIQibB6Laz8";
 
+/* ===========================================
+   Firebase Realtime Database Config
+   (Fill this to enable 100% accurate live presence)
+   =========================================== */
+const FIREBASE_CONFIG = {
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "", // e.g. "https://your-app-default-rtdb.firebaseio.com"
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
+};
+
 const INITIAL_TRACKS = [
   { id: 'WYkrgIZFcZw', title: 'Pahile Pahil Chhathi Maiya', artist: 'Sharda Sinha' },
   { id: '-oga0dNKD0k', title: 'Ugg Ho Suraj Dev', artist: 'Anuradha Paudwal' },
@@ -333,30 +347,30 @@ function trackPresence() {
   // 1. Firebase Realtime Database (Live Multi-User Sync)
   if (typeof firebase !== 'undefined') {
     try {
-      if (!firebase.apps.length) {
-        firebase.initializeApp({
-          databaseURL: "https://chhath-puja-default-rtdb.firebaseio.com"
+      if (!firebase.apps.length && FIREBASE_CONFIG.databaseURL) {
+        firebase.initializeApp(FIREBASE_CONFIG);
+      }
+      if (firebase.apps.length) {
+        const db = firebase.database();
+        const connectedRef = db.ref('.info/connected');
+        const presenceRef = db.ref('presence');
+
+        connectedRef.on('value', (snap) => {
+          if (snap.val() === true) {
+            isRealtimeConnected = true;
+            const con = presenceRef.push();
+            con.onDisconnect().remove();
+            con.set(true);
+          }
+        });
+
+        presenceRef.on('value', (snap) => {
+          const liveCount = snap.numChildren();
+          if (liveCount > 0) {
+            updatePresenceUI(liveCount);
+          }
         });
       }
-      const db = firebase.database();
-      const connectedRef = db.ref('.info/connected');
-      const presenceRef = db.ref('presence');
-
-      connectedRef.on('value', (snap) => {
-        if (snap.val() === true) {
-          isRealtimeConnected = true;
-          const con = presenceRef.push();
-          con.onDisconnect().remove();
-          con.set(true);
-        }
-      });
-
-      presenceRef.on('value', (snap) => {
-        const liveCount = snap.numChildren();
-        if (liveCount > 0) {
-          updatePresenceUI(600 + liveCount);
-        }
-      });
     } catch (e) {}
   }
 
