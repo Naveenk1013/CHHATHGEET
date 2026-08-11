@@ -47,7 +47,7 @@ const FIREBASE_CONFIG = {
   projectId: "chhath-puja-2a60a",
   storageBucket: "chhath-puja-2a60a.appspot.com",
   messagingSenderId: "189671216776",
-  appId: "1:189671216776:web:chhath"
+  appId: "1:189671216776:web:3e88ae46d264baa9eb713d"
 };
 
 const INITIAL_TRACKS = [

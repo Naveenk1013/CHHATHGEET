@@ -41,6 +41,7 @@ _(agent: log anything uncertain here — cultural/content accuracy, placeholder 
 _(agent: append one line per work session, most recent on top — format: `YYYY-MM-DD — what was done`)_
 
 - 2026-08-11 — Resolved YouTube audio playback failure: fixed hidden iframe sizing (320x180 offscreen) to prevent Chrome media renderer suspension, added origin security parameter, and implemented `onError` auto-skip handler for embed-restricted copyright videos.
+- 2026-08-11 — Updated exact Firebase App ID (`1:189671216776:web:3e88ae46d264baa9eb713d`) in `js/script.js` for project `chhath-puja-2a60a`.
 - 2026-08-11 — Configured live Firebase Realtime Database credentials (`chhath-puja-2a60a` / project `189671216776`) in `js/script.js` for 100% accurate real-time online user presence tracking.
 - 2026-08-11 — Enhanced real-time active devotees presence counter (`trackPresence()`) with automatic Firebase RTDB connection, BroadcastChannel multi-tab real-time sync, and smooth pulse count transition.
 - 2026-08-11 — Enhanced Temple Bell button with prominent glowing frosted glass pill (`background: rgba(251, 191, 36, 0.12)`), golden border, and Devanagari label ("घंटी") in the topbar header for maximum visibility.
