@@ -41,13 +41,13 @@ const PLAYLIST_ID = "PLEIQibB6Laz8";
    (Fill this to enable 100% accurate live presence)
    =========================================== */
 const FIREBASE_CONFIG = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "", // e.g. "https://your-app-default-rtdb.firebaseio.com"
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyDd3hSBceunTPgtuxa8X90LtWwgBWldolo",
+  authDomain: "chhath-puja-2a60a.firebaseapp.com",
+  databaseURL: "https://chhath-puja-2a60a-default-rtdb.firebaseio.com",
+  projectId: "chhath-puja-2a60a",
+  storageBucket: "chhath-puja-2a60a.appspot.com",
+  messagingSenderId: "189671216776",
+  appId: "1:189671216776:web:chhath"
 };
 
 const INITIAL_TRACKS = [
